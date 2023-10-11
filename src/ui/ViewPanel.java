@@ -13,12 +13,12 @@ import model.User;
  *
  * @author bellarao
  */
-public class FormPanel extends javax.swing.JPanel {
+public class ViewPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form FormPanel
      */
-    public FormPanel() {
+    public ViewPanel() {
         initComponents();
     }
 
@@ -49,7 +49,7 @@ public class FormPanel extends javax.swing.JPanel {
 
         titleLabel.setFont(new java.awt.Font("Katari", 1, 18)); // NOI18N
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titleLabel.setText("Customer Registration Form");
+        titleLabel.setText("VIEW PANEL");
 
         firstLabel.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         firstLabel.setText("First Name:");
