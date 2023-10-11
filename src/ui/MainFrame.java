@@ -4,6 +4,8 @@
  */
 package ui;
 
+import java.awt.CardLayout;
+
 /**
  *
  * @author bellarao
@@ -69,17 +71,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         SplitPane.setTopComponent(topPanel);
 
-        javax.swing.GroupLayout buttonPanelLayout = new javax.swing.GroupLayout(buttonPanel);
-        buttonPanel.setLayout(buttonPanelLayout);
-        buttonPanelLayout.setHorizontalGroup(
-            buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 715, Short.MAX_VALUE)
-        );
-        buttonPanelLayout.setVerticalGroup(
-            buttonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 395, Short.MAX_VALUE)
-        );
-
+        buttonPanel.setLayout(new java.awt.CardLayout());
         SplitPane.setRightComponent(buttonPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -99,7 +91,13 @@ public class MainFrame extends javax.swing.JFrame {
     private void formButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formButtonActionPerformed
         // TODO add your handling code here:
         FormPanel newFormPanel = new FormPanel();
-        SplitPane.setBottomComponent(newFormPanel);
+        
+        CardLayout layout = (CardLayout) buttonPanel.getLayout();
+        buttonPanel.add(newFormPanel);
+        layout.next(buttonPanel);
+        
+        
+//        SplitPane.setBottomComponent(newFormPanel);
     }//GEN-LAST:event_formButtonActionPerformed
 
     /**

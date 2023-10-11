@@ -91,6 +91,9 @@ public class FormPanel extends javax.swing.JPanel {
 
         ageTextField.setBackground(new java.awt.Color(255, 204, 204));
         ageTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                ageTextFieldKeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 ageTextFieldKeyReleased(evt);
             }
@@ -279,6 +282,16 @@ public class FormPanel extends javax.swing.JPanel {
 //            jPanel2.setVisible(true);
         }  
     }//GEN-LAST:event_submitLabelActionPerformed
+
+    private void ageTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ageTextFieldKeyPressed
+        // TODO add your handling code here:
+        try{ ageTextField.setForeground(Color.black);
+            int age = Integer.parseInt(ageTextField.getText());
+        }
+        catch(Exception e){
+            ageTextField.setForeground(Color.red);
+        }
+    }//GEN-LAST:event_ageTextFieldKeyPressed
     private boolean isEmailAddressValid(String emailAddress) {
         if (emailAddress.charAt(0) == '@' || emailAddress.charAt(emailAddress.length() - 1) == '@') {
             return false;
