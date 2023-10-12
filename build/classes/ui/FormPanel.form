@@ -300,6 +300,7 @@
           <ComponentRef name="buttonGroup1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Female"/>
+        <Property name="actionCommand" type="java.lang.String" value="FEMALE CUSTOMER"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="male">
@@ -308,6 +309,7 @@
           <ComponentRef name="buttonGroup1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Male"/>
+        <Property name="actionCommand" type="java.lang.String" value="MALE CUSTOMER"/>
       </Properties>
     </Component>
   </SubComponents>

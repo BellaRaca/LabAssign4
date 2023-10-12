@@ -141,9 +141,11 @@ private User newUser;
 
         buttonGroup1.add(female);
         female.setText("Female");
+        female.setActionCommand("FEMALE CUSTOMER");
 
         buttonGroup1.add(male);
         male.setText("Male");
+        male.setActionCommand("MALE CUSTOMER");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -312,7 +314,8 @@ private User newUser;
         newUser.setemailaddressLabel(emailaddressTextField.getText());//for text fields
         newUser.setmessageLabel(messageTextArea.getText());//for text field
         newUser.settypeLabel(typeDropdown.getSelectedItem().toString());//selected item dropdown
-        newUser.setgenderLabel(buttonGroup1.getSelection().getActionCommand());      
+//        newUser.setgenderLabel(buttonGroup1.getSelection().getActionCommand());   
+newUser.setgenderLabel(buttonGroup1.getSelection().getActionCommand());    
         boolean isEmailAddressValid = isEmailAddressValid(newUser.getemailaddressLabel());
         if (isEmailAddressValid == false) {
             JOptionPane.showMessageDialog(this, "invalid email address","Wrong Emial Format", JOptionPane.ERROR_MESSAGE);
