@@ -5,13 +5,15 @@
 package ui;
 
 import java.awt.CardLayout;
+import model.User;
 
 /**
  *
  * @author bellarao
  */
 public class MainFrame extends javax.swing.JFrame {
-
+private FormPanel newFormPanel;
+private User currentUser;
     /**
      * Creates new form MainFrame
      */
@@ -95,7 +97,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void formButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formButtonActionPerformed
         // TODO add your handling code here:
-        FormPanel newFormPanel = new FormPanel();
+        newFormPanel = new FormPanel(buttonPanel);
         
         CardLayout layout = (CardLayout) buttonPanel.getLayout();
         buttonPanel.add(newFormPanel);
@@ -107,11 +109,33 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
         // TODO add your handling code here:
-        ViewPanel newViewPanel =new ViewPanel();
+        if (newFormPanel == null){
+            if (currentUser == null) {
+        ViewPanel newViewPanel =new ViewPanel(new User());
         buttonPanel.add(newViewPanel);
         CardLayout layout = (CardLayout) buttonPanel.getLayout();
         layout.next(buttonPanel);
+            } else {
+        ViewPanel newViewPanel =new ViewPanel(currentUser);
+        buttonPanel.add(newViewPanel);
+        CardLayout layout = (CardLayout) buttonPanel.getLayout();
+        layout.next(buttonPanel);     
+            }
         
+        
+        } else {
+            if (currentUser!=null&&!currentUser.isEmpty()){
+               currentUser = newFormPanel.getUser();
+            } else {
+                currentUser = new User();
+            }
+         
+        ViewPanel newViewPanel =new ViewPanel(currentUser);
+        buttonPanel.add(newViewPanel);
+        CardLayout layout = (CardLayout) buttonPanel.getLayout();
+        layout.next(buttonPanel); 
+        }
+    
         
     }//GEN-LAST:event_viewButtonActionPerformed
 

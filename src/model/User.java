@@ -15,12 +15,19 @@ public class User {
     private String emailaddressLabel;
     private String messageLabel;
     private String typeLabel;
+    private String genderLabel;
+    private boolean isEmpty;
+    public boolean isEmpty(){
     
+       return isEmpty; 
+       
+    }
     public String getfirstLabel() {
         return firstLabel;
     }
     
     public void setfirstLabel(String firstLabel) {
+        this.isEmpty = false;
         this.firstLabel = firstLabel;
     }
     
@@ -29,6 +36,7 @@ public class User {
     }
     
     public void setlastLabel(String  lastLabel) {
+        this.isEmpty = false;
         this.lastLabel = lastLabel;
     }
     
@@ -37,6 +45,7 @@ public class User {
     }
     
     public void setageLabel(String ageLabel){
+        this.isEmpty = false;
         this.ageLabel = ageLabel;
     }
     
@@ -45,6 +54,7 @@ public class User {
     }
     
     public void setemailaddressLabel(String emailaddressLabel){
+        this.isEmpty = false;
         this.emailaddressLabel = emailaddressLabel;
     }
     
@@ -53,6 +63,7 @@ public class User {
     }
     
     public void setmessageLabel(String messageLabel){
+        this.isEmpty = false;
         this.messageLabel = messageLabel;
     }
     
@@ -61,6 +72,16 @@ public class User {
     }
     
     public void settypeLabel(String typeLabel){
+        this.isEmpty = false;
         this.typeLabel = typeLabel;
+    }
+    
+    public String getgenderLabel(){
+        return genderLabel;
+    }
+    
+    public void setgenderLabel(String genderLabel){
+        this.isEmpty = false;
+        this.genderLabel = genderLabel;
     }
 }

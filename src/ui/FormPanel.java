@@ -4,8 +4,10 @@
  */
 package ui;
 
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import java.awt.Color;
+import javax.swing.JPanel;
 import model.User;
 
 
@@ -14,12 +16,15 @@ import model.User;
  * @author bellarao
  */
 public class FormPanel extends javax.swing.JPanel {
+private User newUser;
 
     /**
      * Creates new form FormPanel
      */
-    public FormPanel() {
+    private JPanel buttonPanel;
+    public FormPanel(JPanel inputPanel) {
         initComponents();
+        this.buttonPanel = inputPanel;
     }
 
     /**
@@ -31,6 +36,7 @@ public class FormPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         titleLabel = new javax.swing.JLabel();
         firstLabel = new javax.swing.JLabel();
         lastLabel = new javax.swing.JLabel();
@@ -46,6 +52,9 @@ public class FormPanel extends javax.swing.JPanel {
         typeLabel = new javax.swing.JLabel();
         typeDropdown = new javax.swing.JComboBox<>();
         submitLabel = new javax.swing.JButton();
+        genderLabel = new javax.swing.JLabel();
+        female = new javax.swing.JRadioButton();
+        male = new javax.swing.JRadioButton();
 
         titleLabel.setFont(new java.awt.Font("Katari", 1, 18)); // NOI18N
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -127,6 +136,15 @@ public class FormPanel extends javax.swing.JPanel {
             }
         });
 
+        genderLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        genderLabel.setText("Gender:");
+
+        buttonGroup1.add(female);
+        female.setText("Female");
+
+        buttonGroup1.add(male);
+        male.setText("Male");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -134,28 +152,43 @@ public class FormPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
-                        .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(typeLabel)
-                            .addComponent(emailaddressLabel)
-                            .addComponent(firstLabel)
-                            .addComponent(lastLabel)
-                            .addComponent(ageLabel)
-                            .addComponent(messageLabel))
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(typeDropdown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(firstNameTextField)
-                            .addComponent(lastNameTextField)
-                            .addComponent(ageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(emailaddressTextField)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(269, 269, 269)
-                        .addComponent(submitLabel)))
+                        .addComponent(submitLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(189, 189, 189)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(firstLabel)
+                            .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(ageLabel)
+                                .addComponent(lastLabel))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(226, 226, 226)
+                                    .addComponent(typeLabel)
+                                    .addGap(42, 42, 42))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(messageLabel)
+                                    .addGap(40, 40, 40)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(genderLabel)
+                                    .addComponent(emailaddressLabel))
+                                .addGap(40, 40, 40)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(female)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(typeDropdown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(firstNameTextField)
+                                .addComponent(lastNameTextField)
+                                .addComponent(ageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(emailaddressTextField)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(male))))
                 .addContainerGap(161, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -163,7 +196,7 @@ public class FormPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(firstLabel)
                     .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -171,26 +204,38 @@ public class FormPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lastLabel)
                     .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailaddressLabel)
                     .addComponent(emailaddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(messageLabel)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(typeDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(typeLabel))
                 .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(genderLabel)
+                    .addComponent(female))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(messageLabel)
+                        .addGap(101, 101, 101))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(male)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(typeLabel)
+                    .addComponent(typeDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(submitLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        genderLabel.getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
 
     private void firstNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameTextFieldActionPerformed
@@ -260,14 +305,15 @@ public class FormPanel extends javax.swing.JPanel {
     private void submitLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitLabelActionPerformed
         // TODO add your handling code here:
         // System.out.println ("Congratulations, you have submitted")
-        User newUser = new User();
+        newUser = new User();
         newUser.setfirstLabel( firstNameTextField.getText());//for text fields
         newUser.setlastLabel(lastNameTextField.getText());//for text fields
         newUser.setageLabel(ageTextField.getText());//for text fields
         newUser.setemailaddressLabel(emailaddressTextField.getText());//for text fields
         newUser.setmessageLabel(messageTextArea.getText());//for text field
         newUser.settypeLabel(typeDropdown.getSelectedItem().toString());//selected item dropdown
-        boolean isEmailAddressValid = isEmailAddressValid(emailaddressLabel);
+        newUser.setgenderLabel(buttonGroup1.getSelection().getActionCommand());      
+        boolean isEmailAddressValid = isEmailAddressValid(newUser.getemailaddressLabel());
         if (isEmailAddressValid == false) {
             JOptionPane.showMessageDialog(this, "invalid email address","Wrong Emial Format", JOptionPane.ERROR_MESSAGE);
 
@@ -282,9 +328,22 @@ public class FormPanel extends javax.swing.JPanel {
 //            typeLabel3.setText(typeLabel);
 //
 //            jPanel2.setVisible(true);
-        }  
-    }//GEN-LAST:event_submitLabelActionPerformed
 
+
+        }  
+        
+         ViewPanel newViewPanel = new ViewPanel(newUser);
+        buttonPanel.add(newViewPanel);
+        CardLayout layout = (CardLayout) buttonPanel.getLayout();
+        layout.next(buttonPanel);
+    }//GEN-LAST:event_submitLabelActionPerformed
+public User getUser(){
+if (this.newUser==null){
+return new User();
+} else {
+return this.newUser;
+}
+}
     private void ageTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ageTextFieldKeyPressed
         // TODO add your handling code here:
         try{ ageTextField.setForeground(Color.black);
@@ -314,13 +373,17 @@ public class FormPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ageLabel;
     private javax.swing.JTextField ageTextField;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel emailaddressLabel;
     private javax.swing.JTextField emailaddressTextField;
+    private javax.swing.JRadioButton female;
     private javax.swing.JLabel firstLabel;
     private javax.swing.JTextField firstNameTextField;
+    private javax.swing.JLabel genderLabel;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JLabel lastLabel;
     private javax.swing.JTextField lastNameTextField;
+    private javax.swing.JRadioButton male;
     private javax.swing.JLabel messageLabel;
     private javax.swing.JTextArea messageTextArea;
     private javax.swing.JButton submitLabel;

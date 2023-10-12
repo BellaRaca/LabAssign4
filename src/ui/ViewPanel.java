@@ -18,8 +18,14 @@ public class ViewPanel extends javax.swing.JPanel {
     /**
      * Creates new form FormPanel
      */
-    public ViewPanel() {
+    private User newUser;
+    public ViewPanel(User newUser) {
         initComponents();
+        this.newUser = newUser;
+        populateData();
+    
+              
+       
     }
 
     /**
@@ -37,15 +43,15 @@ public class ViewPanel extends javax.swing.JPanel {
         emailaddressLabel = new javax.swing.JLabel();
         ageLabel = new javax.swing.JLabel();
         messageLabel = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        messageTextArea = new javax.swing.JTextArea();
-        firstNameTextField = new javax.swing.JTextField();
-        lastNameTextField = new javax.swing.JTextField();
-        ageTextField = new javax.swing.JTextField();
-        emailaddressTextField = new javax.swing.JTextField();
         typeLabel = new javax.swing.JLabel();
-        typeDropdown = new javax.swing.JComboBox<>();
-        submitLabel = new javax.swing.JButton();
+        firstName = new javax.swing.JLabel();
+        lastName = new javax.swing.JLabel();
+        age = new javax.swing.JLabel();
+        emailaddress = new javax.swing.JLabel();
+        message = new javax.swing.JLabel();
+        type = new javax.swing.JLabel();
+        genderLabel = new javax.swing.JLabel();
+        gender = new javax.swing.JLabel();
 
         titleLabel.setFont(new java.awt.Font("Katari", 1, 18)); // NOI18N
         titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -66,234 +72,87 @@ public class ViewPanel extends javax.swing.JPanel {
         messageLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         messageLabel.setText("Message:");
 
-        messageTextArea.setBackground(new java.awt.Color(255, 204, 204));
-        messageTextArea.setColumns(20);
-        messageTextArea.setRows(5);
-        jScrollPane5.setViewportView(messageTextArea);
-
-        firstNameTextField.setBackground(new java.awt.Color(255, 204, 204));
-        firstNameTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                firstNameTextFieldActionPerformed(evt);
-            }
-        });
-        firstNameTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                firstNameTextFieldKeyReleased(evt);
-            }
-        });
-
-        lastNameTextField.setBackground(new java.awt.Color(255, 204, 204));
-        lastNameTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                lastNameTextFieldKeyReleased(evt);
-            }
-        });
-
-        ageTextField.setBackground(new java.awt.Color(255, 204, 204));
-        ageTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                ageTextFieldKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                ageTextFieldKeyReleased(evt);
-            }
-        });
-
-        emailaddressTextField.setBackground(new java.awt.Color(255, 204, 204));
-        emailaddressTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                emailaddressTextFieldKeyReleased(evt);
-            }
-        });
-
         typeLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         typeLabel.setText("Type:");
 
-        typeDropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "New Customer", "Return Customer", "Guest" }));
-        typeDropdown.setSelectedIndex(-1);
-        typeDropdown.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                typeDropdownActionPerformed(evt);
-            }
-        });
-
-        submitLabel.setBackground(new java.awt.Color(153, 153, 153));
-        submitLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        submitLabel.setText("Submit");
-        submitLabel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitLabelActionPerformed(evt);
-            }
-        });
+        genderLabel.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        genderLabel.setText("Gender:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(189, 189, 189)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
-                        .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(typeLabel)
-                            .addComponent(emailaddressLabel)
-                            .addComponent(firstLabel)
-                            .addComponent(lastLabel)
-                            .addComponent(ageLabel)
-                            .addComponent(messageLabel))
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(typeDropdown, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(firstNameTextField)
-                            .addComponent(lastNameTextField)
-                            .addComponent(ageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(emailaddressTextField)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(269, 269, 269)
-                        .addComponent(submitLabel)))
-                .addContainerGap(161, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(firstLabel)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(ageLabel)
+                                    .addComponent(lastLabel)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(genderLabel)
+                                    .addComponent(emailaddressLabel))
+                                .addGap(2, 2, 2)))
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(emailaddress, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(gender, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(220, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(219, 219, 219)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(messageLabel)
+                    .addComponent(typeLabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(message, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(firstLabel)
-                    .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(firstLabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lastLabel)
-                    .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ageTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(age, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(emailaddressLabel)
-                    .addComponent(emailaddressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(emailaddress, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(genderLabel)
+                    .addComponent(gender, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(messageLabel)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(typeDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(typeLabel))
-                .addGap(35, 35, 35)
-                .addComponent(submitLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(message, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(typeLabel)
+                    .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void firstNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstNameTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_firstNameTextFieldActionPerformed
-
-    private void firstNameTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_firstNameTextFieldKeyReleased
-        // TODO add your handling code here:
-        String firstName = firstNameTextField.getText().toLowerCase();
-        for (int i = 0; i < firstName.length(); i++) {
-            if (firstName.charAt(i) < 97 || firstName.charAt(i) > 122) {
-                JOptionPane.showMessageDialog(this, "Your first name must contain character from 'A' to 'Z' or character from 'a' to 'z'", "Wrong first name input", JOptionPane.ERROR_MESSAGE);
-                break;
-            }
-        }
-    }//GEN-LAST:event_firstNameTextFieldKeyReleased
-
-    private void lastNameTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lastNameTextFieldKeyReleased
-        // TODO add your handling code here:
-        String lastName = lastNameTextField.getText().toLowerCase();
-        for (int i = 0; i < lastName.length(); i++) {
-            if (lastName.charAt(i) < 97 || lastName.charAt(i) > 122) {
-                JOptionPane.showMessageDialog(this, "Your last name must contain character from 'A' to 'Z' or character from 'a' to 'z'", "Wrong last name input", JOptionPane.ERROR_MESSAGE);
-                break;
-            }
-        }
-    }//GEN-LAST:event_lastNameTextFieldKeyReleased
-
-    private void ageTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ageTextFieldKeyReleased
-        // TODO add your handling code here:
-        String age = ageTextField.getText();
-        for (int i = 0; i < age.length(); i++) {
-            if (age.charAt(i) < 48 || age.charAt(i) > 57) {
-                JOptionPane.showMessageDialog(this, "The age must contain from '1' to '9'", "Wrong age Input", JOptionPane.ERROR_MESSAGE);
-                break;
-            }
-        }
-        if (age.length() >= 2 && age.charAt(0) == '0') {
-            JOptionPane.showMessageDialog(this, "The age format is wrong", "Wrong age Input", JOptionPane.ERROR_MESSAGE);
-        }
-        int ageNumberFormat = Integer.parseInt(age);
-        if (ageNumberFormat >= 150) {
-            JOptionPane.showMessageDialog(this, "The age is too large", "Wrong age Input", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_ageTextFieldKeyReleased
-
-    private void emailaddressTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailaddressTextFieldKeyReleased
-        // TODO add your handling code here:
-        String currentEmailAddressContent = emailaddressTextField.getText();
-        int atCounter = 0;
-        for (int i = 0; i < currentEmailAddressContent.length(); i++) {
-            if (currentEmailAddressContent.charAt(i) == '@') {
-                atCounter++;
-                if (atCounter >= 2) {
-                    JOptionPane.showMessageDialog(this, "invalid email address","Wrong Emial Format", JOptionPane.ERROR_MESSAGE);
-                    break;
-                }
-            }
-        }
-
-    }//GEN-LAST:event_emailaddressTextFieldKeyReleased
-
-    private void typeDropdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeDropdownActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_typeDropdownActionPerformed
-
-    private void submitLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitLabelActionPerformed
-        // TODO add your handling code here:
-        // System.out.println ("Congratulations, you have submitted")
-        User newUser = new User();
-        newUser.setfirstLabel( firstNameTextField.getText());//for text fields
-        newUser.setlastLabel(lastNameTextField.getText());//for text fields
-        newUser.setageLabel(ageTextField.getText());//for text fields
-        newUser.setemailaddressLabel(emailaddressTextField.getText());//for text fields
-        newUser.setmessageLabel(messageTextArea.getText());//for text field
-        newUser.settypeLabel(typeDropdown.getSelectedItem().toString());//selected item dropdown
-        boolean isEmailAddressValid = isEmailAddressValid(emailaddressLabel);
-        if (isEmailAddressValid == false) {
-            JOptionPane.showMessageDialog(this, "invalid email address","Wrong Emial Format", JOptionPane.ERROR_MESSAGE);
-
-        } else {
-
-//            jPanel1.setVisible(false);
-//            firstLabel3.setText(firstLabel);
-//            lastLabel3.setText(lastLabel);
-//            ageLabel3.setText(ageLabel);
-//            emailLabel3.setText(emailaddressLabel);
-//            messageLabel3.setText(messageLabel);
-//            typeLabel3.setText(typeLabel);
-//
-//            jPanel2.setVisible(true);
-        }  
-    }//GEN-LAST:event_submitLabelActionPerformed
-
-    private void ageTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ageTextFieldKeyPressed
-        // TODO add your handling code here:
-        try{ ageTextField.setForeground(Color.black);
-            int age = Integer.parseInt(ageTextField.getText());
-        }
-        catch(Exception e){
-            ageTextField.setForeground(Color.red);
-        }
-    }//GEN-LAST:event_ageTextFieldKeyPressed
     private boolean isEmailAddressValid(String emailAddress) {
         if (emailAddress.charAt(0) == '@' || emailAddress.charAt(emailAddress.length() - 1) == '@') {
             return false;
@@ -312,20 +171,34 @@ public class ViewPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel age;
     private javax.swing.JLabel ageLabel;
-    private javax.swing.JTextField ageTextField;
+    private javax.swing.JLabel emailaddress;
     private javax.swing.JLabel emailaddressLabel;
-    private javax.swing.JTextField emailaddressTextField;
     private javax.swing.JLabel firstLabel;
-    private javax.swing.JTextField firstNameTextField;
-    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JLabel firstName;
+    private javax.swing.JLabel gender;
+    private javax.swing.JLabel genderLabel;
     private javax.swing.JLabel lastLabel;
-    private javax.swing.JTextField lastNameTextField;
+    private javax.swing.JLabel lastName;
+    private javax.swing.JLabel message;
     private javax.swing.JLabel messageLabel;
-    private javax.swing.JTextArea messageTextArea;
-    private javax.swing.JButton submitLabel;
     private javax.swing.JLabel titleLabel;
-    private javax.swing.JComboBox<String> typeDropdown;
+    private javax.swing.JLabel type;
     private javax.swing.JLabel typeLabel;
     // End of variables declaration//GEN-END:variables
+
+    private void populateData() { 
+       firstName.setText(this.newUser.getfirstLabel());
+       lastName.setText(this.newUser.getlastLabel());
+       age.setText(this.newUser.getageLabel());
+       emailaddress.setText(this.newUser.getemailaddressLabel());
+       message.setText(this.newUser.getmessageLabel());
+       type.setText(this.newUser.gettypeLabel());
+       gender.setText(this.newUser.getgenderLabel());
+       
+       
+    }
+   
 }
+
